@@ -34,7 +34,7 @@
         },
         {
             city: "DA NANG", country: "베트남", flag: "🇻🇳", slug: "danang",
-            photo: "assets/image/PAGE 01/hero/다낭.webp",
+            photo: "no-photo.svg",
             stats: { nature: 4, food: 4, city: 2, relax: 5, culture: 2, adventure: 3, shopping: 2, nightlife: 2, wellness: 5, festival: 2, city_nightlife: 2 },
         },
         {
@@ -54,7 +54,7 @@
         },
         {
             city: "SYDNEY", country: "호주", flag: "🇦🇺", slug: "sydney",
-            photo: "assets/image/PAGE 01/hero/호주.jpg",
+            photo: "assets/image/PAGE 01/hero/호주2.jpg",
             stats: { nature: 4, food: 3, city: 5, relax: 3, culture: 3, adventure: 4, shopping: 4, nightlife: 4, wellness: 3, festival: 3, city_nightlife: 5 },
         },
     ];
