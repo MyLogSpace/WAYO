@@ -7,7 +7,7 @@
         { city: "TOKYO", country: "일본", flag: "🇯🇵", match: 94, photo: "assets/image/PAGE 01/hero/도쿄.jpg", link: "destination-detail.html?city=tokyo" },
         { city: "TAIPEI", country: "대만", flag: "🇹🇼", match: 89, photo: null, link: "destination-detail.html?city=taipei" },
         { city: "OSAKA", country: "일본", flag: "🇯🇵", match: 86, photo: "https://images.unsplash.com/photo-1734427842844-29f08e51763a?fm=jpg&auto=format&fit=crop&q=80&w=600", link: "destination-detail.html?city=osaka" },
-        { city: "DA NANG", country: "베트남", flag: "🇻🇳", match: 83, photo: "assets/image/PAGE 01/hero/다낭.webp", link: "destination-detail.html?city=danang" },
+        { city: "DA NANG", country: "베트남", flag: "🇻🇳", match: 83, photo: "no-photo.svg", link: "destination-detail.html?city=danang" },
     ];
 
     const ITINERARIES = [
