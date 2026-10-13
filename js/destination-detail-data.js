@@ -124,7 +124,7 @@ window.DESTINATION_DETAILS = {
 
     danang: {
         city: "DA NANG", countryKo: "베트남", countryEn: "Vietnam",
-        heroImg: "assets/image/PAGE 01/hero/다낭.webp",
+        heroImg: "no-photo.svg",
         heroAlt: "다낭 해변과 리조트 풍경",
         weather: "29°C 맑음",
         thumbs: [],
@@ -134,7 +134,7 @@ window.DESTINATION_DETAILS = {
         insightBody: "휴양과 여유로운 리조트 라이프를 좋아하는 스타일에 다낭의 조용한 해변과 온천이 잘 맞아요. 짧은 비행 거리로 완전한 휴식을 즐길 수 있어요.",
         bestTime: "Feb – May",
         bestTimeDesc: "건기라 맑고 따뜻한 날씨가 이어져 여행하기 좋아요.",
-        bestTimeImg: "assets/image/PAGE 01/hero/다낭.webp",
+        bestTimeImg: "no-photo.svg",
         bestTimeImgAlt: "다낭 해변",
         costTotal: "₩870,000",
         cost: {
@@ -145,7 +145,7 @@ window.DESTINATION_DETAILS = {
         },
         recDays: "4 – 5 Days",
         recDesc: "해변 휴양과 온천, 근교 나들이를 함께 즐기기 좋은 일정이에요.",
-        recImg: "assets/image/PAGE 01/hero/다낭.webp",
+        recImg: "no-photo.svg",
         recImgAlt: "다낭 리조트",
     },
 
@@ -259,7 +259,7 @@ window.DESTINATION_DETAILS = {
 
     sydney: {
         city: "SYDNEY", countryKo: "호주", countryEn: "Australia",
-        heroImg: "assets/image/PAGE 01/hero/호주.jpg",
+        heroImg: "assets/image/PAGE 01/hero/호주2.jpg",
         heroAlt: "시드니 오페라하우스와 하버브리지",
         weather: "23°C 맑음",
         thumbs: [],
@@ -269,7 +269,7 @@ window.DESTINATION_DETAILS = {
         insightBody: "activity와 도시 풍경을 함께 즐기는 스타일에 시드니의 해안 도시 매력이 잘 맞아요. 오페라하우스와 해변을 함께 즐길 수 있는 도시예요.",
         bestTime: "Sep – Nov<br>Mar – May",
         bestTimeDesc: "덥지도 춥지도 않은 봄, 가을 시즌이 여행하기 좋아요.",
-        bestTimeImg: "assets/image/PAGE 01/hero/호주.jpg",
+        bestTimeImg: "assets/image/PAGE 01/hero/호주2.jpg",
         bestTimeImgAlt: "시드니 해안",
         costTotal: "₩2,450,000",
         cost: {
@@ -280,7 +280,7 @@ window.DESTINATION_DETAILS = {
         },
         recDays: "5 – 7 Days",
         recDesc: "도심 관광과 해변, 근교 블루마운틴까지 즐기기 좋은 일정이에요.",
-        recImg: "assets/image/PAGE 01/hero/호주.jpg",
+        recImg: "assets/image/PAGE 01/hero/호주2.jpg",
         recImgAlt: "시드니 오페라하우스",
     },
 };
