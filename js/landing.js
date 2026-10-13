@@ -76,7 +76,6 @@
         matchWrap: document.getElementById("heroMatchWrap2"),
         items: [
           { img: "assets/image/PAGE 01/hero/이탈리아1.jpg", pin: "VENICE", title: "VENICE", loc: "Venice, Italy", match: 92 },
-          { img: "assets/image/PAGE 01/hero/이탈리아2.jpg", pin: "VENICE", title: "VENICE", loc: "Venice, Italy", match: 92 },
           { img: "assets/image/PAGE 01/hero/체코.jpg", pin: "PRAGUE", title: "PRAGUE", loc: "Prague, Czech Republic", match: 85 },
         ],
       },
@@ -87,7 +86,7 @@
         match: document.getElementById("heroMatch3"),
         textWrap: document.getElementById("heroText3"),
         items: [
-          { img: "assets/image/PAGE 01/hero/미국.jpg", pin: "NEW YORK", title: "NEW YORK", match: 90 },
+          { img: "assets/image/PAGE 01/hero/호주2.jpg", pin: "SYDNEY", title: "SYDNEY", match: 87 },
           { img: "assets/image/PAGE 01/hero/오스트리아.jpg", pin: "HALLSTATT", title: "HALLSTATT", match: 86 },
         ],
       },
