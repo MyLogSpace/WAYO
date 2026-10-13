@@ -494,3 +494,20 @@
 
   document.addEventListener("DOMContentLoaded", init);
 })();
+
+
+// 이미지 파일이 없거나 깨지면 깨진 아이콘 대신 자리표시 이미지로 바꾼다.
+(function () {
+    const FALLBACK = "no-photo.svg";
+    function fix(img) {
+        if (img.getAttribute("src") && !img.src.endsWith(FALLBACK)) img.src = FALLBACK;
+    }
+    document.addEventListener("error", (e) => {
+        if (e.target instanceof HTMLImageElement) fix(e.target);
+    }, true);
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("img").forEach((img) => {
+            if (img.complete && img.naturalWidth === 0) fix(img);
+        });
+    });
+})();
