@@ -1,0 +1,224 @@
+/**
+ * css/landing.css — 랜딩 페이지(index.html) 전용 스타일
+ * 히어로/How it works/Discover 등은 index.html 안에 Tailwind로 직접 스타일링되어 있음.
+ * 네비바(2단 구조)는 index.html 자체 <style> 블록에서 담당하고, 이 파일은
+ * "Your Way Starts Here" 취향 카드 섹션만 담당한다.
+ */
+
+/* ==========================
+   From Place to Plan — 일정 이미지 슬라이더
+========================== */
+.itin-slider {
+    overflow: hidden;
+}
+
+.itin-slider-track {
+    display: flex;
+    width: 400%;
+    transition: transform .6s cubic-bezier(.65, 0, .35, 1);
+}
+
+.itin-slider-track.no-transition {
+    transition: none;
+}
+
+.itin-slide {
+    width: 25%;
+    flex-shrink: 0;
+    display: block;
+    height: auto;
+}
+
+/* ==========================
+   Your Way Starts Here — 취향 카드
+========================== */
+.chips-section {
+    padding: 64px 0;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    text-align: center;
+}
+
+.chips-section .container {
+    max-width: 1280px;
+}
+
+.chips-section .eyebrow-label {
+    display: inline-block;
+    font-family: 'Inter', var(--font-mono);
+}
+
+.chips-section h2 {
+    margin-top: 12px;
+    font-family: 'Inter', 'Noto Sans KR', var(--font-body);
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+.chips-section > .container > p {
+    margin-top: 12px;
+    font-family: 'Inter', 'Noto Sans KR', var(--font-body);
+    font-size: 16px;
+    color: var(--ink-soft);
+}
+
+.way-chip-row {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 22px;
+    text-align: left;
+}
+
+.way-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.way-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.way-card.is-selected {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+}
+
+.way-card-media {
+    position: relative;
+    height: 290px;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+
+.way-card-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.way-card-slide.is-active {
+    opacity: 1;
+}
+
+.way-card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .04) 0%, rgba(0, 0, 0, .28) 100%);
+}
+
+.way-card-bookmark {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .16s ease, color .16s ease;
+}
+
+.way-card.is-selected .way-card-bookmark {
+    background: var(--brand);
+    color: var(--ink);
+}
+
+.way-card-body {
+    padding: 30px 22px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.way-card-body h4 {
+    font-family: 'Inter', 'Noto Sans KR', var(--font-body);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.way-card-body .sub {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.way-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.way-card-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    background: var(--bg-soft);
+    color: var(--ink-soft);
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ==========================
+   반응형
+========================== */
+@media (max-width: 960px) {
+    .chips-section h2 { font-size: 30px; }
+    .way-chip-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+    .chips-section h2 { font-size: 26px; }
+    .way-chip-row { grid-template-columns: 1fr; gap: 14px; }
+}
+
+/* ==========================
+   From Place to Plan — 체크리스트 & DAY 탭
+========================== */
+.check-badge {
+    opacity: 0;
+    transform: scale(.4);
+    transition: opacity .4s ease, transform .4s cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.check-item.is-visible .check-badge {
+    animation: checkPop 3s cubic-bezier(.34, 1.56, .64, 1) infinite;
+}
+
+@keyframes checkPop {
+    0% { opacity: 0; transform: scale(.4); }
+    10% { opacity: 1; transform: scale(1.15); }
+    20% { transform: scale(1); }
+    70% { opacity: 1; transform: scale(1); }
+    85%, 100% { opacity: 0; transform: scale(.4); }
+}
+
+.check-item:nth-child(1) .check-badge { animation-delay: 0s; }
+.check-item:nth-child(2) .check-badge { animation-delay: .3s; }
+.check-item:nth-child(3) .check-badge { animation-delay: .6s; }
+.check-item:nth-child(4) .check-badge { animation-delay: .9s; }
+.check-item:nth-child(5) .check-badge { animation-delay: 1.2s; }

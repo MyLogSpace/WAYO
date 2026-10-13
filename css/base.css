@@ -1,0 +1,246 @@
+/**
+ * css/base.css — 리셋 · 공통 타이포 · 레이아웃 유틸리티
+ * 모든 페이지에서 variables.css 다음에 불러옵니다.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+}
+
+h1 { font-size: 52px; line-height: 1.18; }
+h2 { font-size: 36px; line-height: 1.25; }
+h3 { font-size: 24px; line-height: 1.35; }
+h4 { font-size: 18px; line-height: 1.4; }
+
+p {
+    color: var(--ink-soft);
+}
+
+/* ==========================
+   레이아웃 유틸리티
+========================== */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section {
+    padding: 96px 0;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--accent-dark);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+    padding: 7px 14px;
+    border-radius: var(--radius-full);
+}
+
+.eyebrow .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulseDot 1.6s infinite;
+}
+
+@keyframes pulseDot {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 45%, transparent); }
+    70% { box-shadow: 0 0 0 7px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.eyebrow-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+    margin-bottom: 10px;
+}
+
+/* ==========================
+   버튼
+========================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 54px;
+    padding: 0 28px;
+    border-radius: var(--radius-full);
+    font-family: var(--font-body);
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    white-space: nowrap;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #FFFFFF;
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.btn-primary:hover {
+    background: var(--accent-dark);
+    box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 42%, transparent);
+    transform: translateY(-1px);
+}
+
+.btn-dark {
+    background: var(--ink);
+    color: #FFFFFF;
+}
+
+.btn-dark:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--surface);
+    color: var(--ink);
+    border: 1.5px solid var(--line);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+}
+
+.btn-ghost {
+    height: 42px;
+    padding: 0 18px;
+    font-size: 14.5px;
+    color: var(--ink-soft);
+}
+
+.btn-ghost:hover {
+    color: var(--accent-dark);
+}
+
+.btn-sm {
+    height: 42px;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+/* ==========================
+   카드
+========================== */
+.card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================
+   토스트 (준비중 안내 등, 모든 페이지 공통)
+========================== */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 32px;
+    transform: translate(-50%, 16px);
+    background: var(--ink);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 22px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 2000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ==========================
+   반응형 브레이크포인트 공통값
+========================== */
+@media (max-width: 960px) {
+    h1 { font-size: 38px; }
+    h2 { font-size: 28px; }
+    .section { padding: 64px 0; }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; }
+    .container { padding: 0 18px; }
+    .section { padding: 48px 0; }
+}

@@ -1,0 +1,88 @@
+/**
+ * css/variables.css — 디자인 토큰 (컬러 · 타이포 · 간격)
+ * WAYO — AI 여행 큐레이터 & 플래너 — 전 페이지 공통
+ * "WAYO COLOR SYSTEM" 팔레트로 전면 교체:
+ *   Sunny Yellow #FFC83D (Action/CTA/Highlight), Sky Blue #8CCFE8 (Information/Data/Map),
+ *   Deep Navy #172033 (Text/Title/Structure), Cool Gray #697386 (Sub Text/Border/Disabled),
+ *   Warm Ivory #FFFDF7 (Background/Surface)
+ */
+
+:root {
+    /* 배경 — Warm Ivory 톤 */
+    --bg: #FFFDF7;
+    --bg-soft: #FBF3DE;
+    --bg-deep: #F7EAC6;
+    --surface: #FFFFFF;
+
+    /* 텍스트 — Deep Navy 톤 */
+    --ink: #172033;
+    --ink-soft: #454F63;
+    --muted: #697386;
+
+    /* 팔레트 — 기존에 페이지마다 다르게 쓰던 틸/코랄/골드 계열을 새 팔레트에 맞춰 재정의.
+       사이트 전체가 공유하는 "재료색"이며, 이제는 모든 페이지가 동일한 --accent(Sunny Yellow)를
+       공유해 하나의 통일된 컬러 시스템으로 동작한다. */
+    --teal: #8CCFE8;
+    --teal-dark: #4FA8C9;
+    --teal-soft: #E8F6FB;
+    --coral: #F2825A;
+    --coral-dark: #C15E33;
+    --coral-soft: #FDE4D8;
+    --gold: #FFC83D;
+    --gold-dark: #C99012;
+    --gold-soft: #FFF3D6;
+    --gold-deep: #D9A62E;
+    --gold-deep-soft: #FFF0CC;
+    --sunset-pink: #F6CFC2;
+
+    /* Sunny Yellow — 사이트 전체 공통 브랜드 컬러 */
+    --gold-bold: #FFC83D;
+    --gold-bold-dark: #C99012;
+    --gold-bold-soft: #FFF3D6;
+
+    /* 사이트 공통 브랜드 컬러 — 상단바(골드 바, 활성 카테고리) 전용 고정값.
+       페이지별 --accent는 favorites.css/insights.css 등에서 재정의되지만,
+       이 --brand는 절대 재정의하지 않아 상단바가 항상 같은 옐로우로 유지된다. */
+    --brand: #FFC83D;
+    --brand-dark: #C99012;
+
+    /* 사이트 공통 컨셉 컬러 — Sunny Yellow. 더 이상 페이지마다 다르게 재정의하지 않고
+       전 페이지가 이 3개를 그대로 공유한다. */
+    --accent: var(--gold-bold);
+    --accent-dark: var(--gold-bold-dark);
+    --accent-soft: var(--gold-bold-soft);
+
+    /* Sky Blue — 정보/데이터/지도 등 보조 액센트 전용 토큰 */
+    --sky: #8CCFE8;
+    --sky-dark: #4FA8C9;
+    --sky-soft: #E8F6FB;
+
+    /* 브랜드 시그니처 그라데이션 — Sky Blue → Sunny Yellow → Coral (장식용 블롭 · CTA 등 포인트 요소에 제한적으로 사용) */
+    --gradient-sunset: linear-gradient(120deg, var(--teal) 0%, var(--gold) 62%, var(--coral) 100%);
+
+    /* 라인 / 그림자 — Cool Gray 계열로 톤 통일 */
+    --line: #E4E7EC;
+    --shadow-sm: 0 2px 10px rgba(23, 32, 51, .06);
+    --shadow-md: 0 10px 30px rgba(23, 32, 51, .10);
+    --shadow-lg: 0 20px 50px rgba(23, 32, 51, .14);
+
+    /* 상태 색 (팔레트에 없는 기능색이라 유지) */
+    --success: #2F9E5B;
+    --warning: #E0A030;
+    --danger: #D9534F;
+
+    /* 타이포 — Poppins(헤드라인 굵게) + Pretendard(UI, 본문) */
+    --font-display: 'Poppins', 'Pretendard', sans-serif;
+    --font-body: 'Pretendard', 'Noto Sans KR', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* 형태 */
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 999px;
+
+    /* 레이아웃 */
+    --container-max: 1200px;
+    --nav-height: 76px;
+}

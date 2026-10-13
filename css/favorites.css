@@ -1,0 +1,383 @@
+/**
+ * css/favorites.css — 즐겨찾기(favorites.html) 전용 스타일
+ * 컨셉 컬러: 사이트 공통 옐로우 팔레트를 그대로 사용 (variables.css 기본값)
+ */
+
+/* 크림 베이지 배경이 코랄 핑크와 부딪혀 보여서, 이 페이지만 화이트 배경으로 변경 */
+body {
+    background: #FFFFFF;
+}
+
+/* 화이트 배경 위에서 상단바 그림자가 이질적으로 보여 제거 */
+.navbar-v2 {
+    box-shadow: none;
+}
+
+.page-header {
+    padding: 56px 0 40px;
+}
+
+.page-header h1 {
+    margin-top: 16px;
+    font-size: 32px;
+}
+
+.page-header p {
+    margin-top: 12px;
+    max-width: 480px;
+    font-size: 15px;
+}
+
+/* ==========================
+   탭
+========================== */
+.fav-tabs {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 32px;
+}
+
+.fav-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 14px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--muted);
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .16s ease;
+}
+
+.fav-tab:hover {
+    color: var(--ink);
+}
+
+.fav-tab.is-active {
+    color: var(--ink);
+    font-weight: 700;
+    border-bottom-color: var(--accent-dark);
+}
+
+.fav-tab-count {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    background: var(--bg);
+    color: var(--muted);
+}
+
+.fav-tab.is-active .fav-tab-count {
+    background: var(--accent-soft);
+    color: var(--ink);
+}
+
+.fav-tab-panel {
+    display: none;
+    padding-bottom: 96px;
+}
+
+.fav-tab-panel.is-active {
+    display: block;
+}
+
+/* ==========================
+   TAB 1: 여행지 카드
+========================== */
+.fav-dest-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.fav-dest-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.fav-dest-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.fav-dest-photo {
+    position: relative;
+    height: 190px;
+    background-size: cover;
+    background-position: center;
+}
+
+.fav-dest-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, .55) 100%);
+}
+
+.fav-dest-city {
+    position: absolute;
+    z-index: 1;
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+    color: #FFFFFF;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: .01em;
+}
+
+.fav-dest-heart {
+    position: absolute;
+    z-index: 2;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .92);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform .16s ease;
+}
+
+.fav-dest-heart:hover {
+    transform: scale(1.1);
+}
+
+.fav-dest-heart i {
+    fill: currentColor;
+}
+
+.fav-dest-body {
+    position: relative;
+    padding: 22px 18px 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.fav-dest-match {
+    position: absolute;
+    top: -22px;
+    right: 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    border-radius: var(--radius-md);
+    padding: 6px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fav-dest-match span:first-child {
+    font-family: var(--font-mono);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    color: var(--ink-soft);
+}
+
+.fav-dest-match span:last-child {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.fav-dest-country {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+}
+
+.fav-dest-journey {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+}
+
+.fav-dest-journey a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    height: 42px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    transition: border-color .16s ease, color .16s ease;
+}
+
+.fav-dest-journey a:hover {
+    border-color: var(--accent);
+    color: var(--ink);
+}
+
+/* ==========================
+   TAB 2: 저장된 일정
+========================== */
+.fav-itin-head {
+    margin-bottom: 24px;
+}
+
+.fav-itin-head h3 {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    letter-spacing: .04em;
+}
+
+.fav-itin-head p {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.fav-itin-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.fav-itin-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: box-shadow .18s ease;
+}
+
+.fav-itin-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.fav-itin-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.fav-itin-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    background: var(--accent-soft);
+    padding: 4px 12px;
+    border-radius: var(--radius-full);
+}
+
+.fav-itin-nights {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.fav-itin-card h4 {
+    font-size: 21px;
+    line-height: 1.35;
+    margin-bottom: 14px;
+}
+
+.fav-itin-dates {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-bottom: 22px;
+}
+
+.fav-itin-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: var(--ink);
+    color: #FFFFFF;
+    font-size: 13.5px;
+    font-weight: 700;
+    transition: background .16s ease;
+}
+
+.fav-itin-cta:hover {
+    background: var(--accent-dark);
+}
+
+/* ==========================
+   빈 상태 (공통)
+========================== */
+.fav-empty {
+    display: none;
+    text-align: center;
+    padding: 64px 20px;
+    background: var(--surface);
+    border: 1px dashed var(--line);
+    border-radius: var(--radius-lg);
+    color: var(--ink-soft);
+}
+
+.fav-empty.show {
+    display: block;
+}
+
+.fav-empty .icon-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+/* ==========================
+   반응형
+========================== */
+@media (max-width: 960px) {
+    .fav-dest-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .fav-itin-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+    .page-header h1 { font-size: 26px; }
+    .fav-dest-grid { grid-template-columns: 1fr; }
+    .fav-tabs { gap: 16px; }
+}

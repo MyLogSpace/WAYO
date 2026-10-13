@@ -1,0 +1,604 @@
+/**
+ * css/destination.css — 여행지 추천(destination.html) 전용 스타일
+ * 컨셉 컬러: 골드 — 홈 화면과 동일한 --accent 계열을 그대로 사용 (variables.css 기본값)
+ */
+
+/* 이 페이지는 히어로 섹션과 그 아래 배경을 동일한 톤으로 통일한다 (var(--bg)) */
+body {
+    background: var(--bg);
+}
+
+/* ==========================
+   히어로
+========================== */
+.find-hero {
+    position: relative;
+    padding: 56px 0 32px;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+.find-hero-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.find-hero-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.find-hero-title-accent {
+    color: var(--accent-dark);
+}
+
+.find-hero-sub {
+    margin-top: 8px;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1.3;
+    color: var(--ink);
+}
+
+/* 시작점을 필터 카드의 "여행기간" 위쪽, 서브타이틀과 필터 카드 사이 여백 쪽으로 고정한다. */
+.find-hero-path-wrap {
+    position: absolute;
+    left: 26%;
+    right: 24px;
+    bottom: -18px;
+    height: 44px;
+}
+
+.find-hero-path {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.find-hero-pin {
+    position: absolute;
+    transform: translate(-50%, -100%);
+}
+
+.find-hero-plane {
+    position: absolute;
+    right: 5px;
+    top: 35%;
+    width: 20px;
+    height: 20px;
+    color: var(--gold-dark);
+    transform: translateY(-50%) rotate(45deg);
+}
+
+/* ==========================
+   필터 카드
+========================== */
+.find-filter-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+}
+
+.find-filter-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.3fr;
+    gap: 32px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--line);
+}
+
+.find-filter-field label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+}
+
+.find-date-range {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.find-date-range input[type="date"] {
+    flex: 1;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 9px 10px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+.find-date-range span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.find-filter-field select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--bg);
+    cursor: pointer;
+}
+
+.find-budget-scale {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-soft);
+}
+
+.find-budget-scale input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--line);
+}
+
+.find-budget-scale input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .18);
+}
+
+.find-budget-scale input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border: none;
+    border-radius: 50%;
+    background: var(--gold);
+    cursor: pointer;
+}
+
+/* ==========================
+   Travel Style 칩
+========================== */
+.find-style-row {
+    padding-top: 20px;
+}
+
+.find-style-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 14px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+.find-style-body {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.find-style-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+}
+
+/* 이 자리에서 강제 줄바꿈 — 우선순위 4개(+도시야경)는 1행, 나머지는 2행부터 시작한다. */
+.find-style-break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.style-chip-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 9px 14px;
+    border: 1.5px dashed var(--line);
+    border-radius: var(--radius-full);
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color .16s ease, color .16s ease;
+}
+
+.style-chip-more:hover {
+    border-color: var(--accent);
+    color: var(--accent-dark);
+}
+
+.style-chip-more[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.find-style-extra {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-basis: 100%;
+}
+
+.find-style-extra[hidden] {
+    display: none;
+}
+
+.style-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-full);
+    background: var(--surface);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    transition: border-color .16s ease, background .16s ease, color .16s ease;
+}
+
+.style-chip:hover {
+    border-color: var(--accent);
+}
+
+.style-chip.is-selected {
+    border-color: var(--accent);
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+.find-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 48px;
+    padding: 0 22px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    color: var(--ink);
+    font-size: 14.5px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+}
+
+.find-search-btn:hover {
+    background: #FFD35C;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(255, 200, 61, .4);
+}
+
+/* ==========================
+   추천 결과: 빈 상태 / 로딩 상태
+========================== */
+.find-matches-empty,
+.find-matches-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 64px 24px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.find-matches-empty i,
+.find-matches-spinner {
+    color: var(--accent);
+}
+
+.find-matches-empty p,
+.find-matches-loading p {
+    font-size: 14px;
+}
+
+.find-matches-empty strong {
+    color: var(--accent-dark);
+}
+
+.find-matches-spinner {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 3px solid var(--line);
+    border-top-color: var(--accent);
+    animation: findSpin .9s linear infinite;
+}
+
+@keyframes findSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================
+   YOUR MATCHES
+========================== */
+.find-matches-section {
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.find-matches {
+    padding: 56px 24px 96px;
+}
+
+.find-matches-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.find-matches-head h2 {
+    letter-spacing: .01em;
+}
+
+.find-matches-head p {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.find-matches-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.find-matches-controls select {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 9px 12px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--surface);
+    cursor: pointer;
+}
+
+.find-view-toggle {
+    display: flex;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.find-view-toggle button {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    background: var(--surface);
+    transition: background .16s ease, color .16s ease;
+}
+
+.find-view-toggle button.is-active {
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+}
+
+/* ==========================
+   여행지 카드 그리드
+========================== */
+.find-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.find-grid.is-list {
+    grid-template-columns: 1fr;
+}
+
+.find-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease;
+}
+
+.find-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.find-grid.is-list .find-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.find-grid.is-list .find-card-body {
+    flex: 1;
+}
+
+.find-grid.is-list .find-card-link {
+    flex-basis: 100%;
+}
+
+.find-card-photo {
+    position: relative;
+    height: 280px;
+    background-size: cover;
+    background-position: center;
+}
+
+.find-grid.is-list .find-card-photo {
+    width: 280px;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.find-card-heart {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .85);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+    transition: color .16s ease, background .16s ease;
+}
+
+.find-card-heart.is-active {
+    color: var(--coral-dark);
+    background: #FFFFFF;
+}
+
+.find-card-heart.is-active i {
+    fill: currentColor;
+}
+
+.find-card-body {
+    padding: 20px 22px 22px;
+    flex: 1;
+}
+
+.find-card-country {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.find-flag {
+    font-size: 14px;
+}
+
+.find-card-city {
+    margin-top: 4px;
+    font-size: 24px;
+    letter-spacing: .01em;
+}
+
+.find-card-match {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+}
+
+.find-card-match-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.find-card-match-value {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.find-card-stats {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.find-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.find-dots {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.find-dots .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--line);
+}
+
+.find-dots .dot.is-filled {
+    background: var(--accent);
+}
+
+.find-card-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 16px;
+    background: var(--accent-soft);
+    border-top: 1px solid var(--line);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--ink);
+    transition: background .16s ease;
+}
+
+.find-card-link:hover {
+    background: var(--accent);
+}
+
+/* ==========================
+   반응형
+========================== */
+@media (max-width: 960px) {
+    .find-hero-path-wrap,
+    .find-hero-plane { display: none; }
+    .find-filter-row { grid-template-columns: 1fr; gap: 18px; }
+    .find-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .find-hero-sub { font-size: 24px; }
+    .find-filter-card { padding: 22px 20px; }
+    .find-style-body { flex-direction: column; align-items: stretch; }
+    .find-search-btn { justify-content: center; }
+    .find-grid { grid-template-columns: 1fr; }
+    .find-grid.is-list .find-card { flex-direction: column; }
+    .find-grid.is-list .find-card-photo { width: 100%; height: 200px; }
+}

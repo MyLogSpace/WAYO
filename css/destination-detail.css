@@ -1,0 +1,505 @@
+/**
+ * css/destination-detail.css — 여행지 상세(destination-detail.html) 전용 스타일
+ * 홈 화면과 동일한 골드 컨셉을 공유한다 (variables.css 기본 --accent 사용).
+ */
+
+/* ==========================
+   뒤로가기
+========================== */
+.detail-back-link {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, .92);
+    padding: 9px 16px;
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    backdrop-filter: blur(4px);
+    transition: background .16s ease;
+}
+
+.detail-back-link:hover {
+    background: #FFFFFF;
+}
+
+/* ==========================
+   상단: 사진 + 매치 요약
+========================== */
+.detail-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding: 20px 24px 48px;
+}
+
+.detail-hero {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.detail-hero-img {
+    width: 100%;
+    height: 460px;
+    object-fit: cover;
+}
+
+.detail-hero-chips {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.detail-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(26, 26, 26, .55);
+    color: #FFFFFF;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 7px 12px;
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+}
+
+.detail-thumbs {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    display: flex;
+    gap: 6px;
+}
+
+.detail-thumbs img,
+.detail-thumb-more {
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, .85);
+}
+
+.detail-thumb-more {
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-thumb-more img {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+.detail-thumb-more span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 26, 26, .55);
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.detail-info-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.detail-country {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+}
+
+.detail-flag-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--coral);
+}
+
+.detail-city {
+    margin-top: 6px;
+    font-size: 44px;
+    letter-spacing: .01em;
+}
+
+.detail-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.detail-favorite {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-full);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    background: var(--surface);
+    white-space: nowrap;
+    transition: border-color .16s ease, color .16s ease, background .16s ease;
+}
+
+.detail-favorite:hover {
+    border-color: var(--accent);
+}
+
+.detail-favorite.is-active {
+    border-color: var(--coral);
+    background: var(--coral-soft);
+    color: var(--coral-dark);
+}
+
+.detail-favorite.is-active i {
+    fill: currentColor;
+}
+
+.detail-stats-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 0 0;
+}
+
+.detail-match {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-match-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.detail-match-value {
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.detail-match-value small {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.detail-match-path {
+    width: 100%;
+    height: 26px;
+    margin-top: 14px;
+    opacity: .8;
+}
+
+.detail-reasons-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 14px;
+}
+
+.reason-row {
+    display: grid;
+    grid-template-columns: 78px 1fr 40px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.reason-row:last-child {
+    margin-bottom: 0;
+}
+
+.reason-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    white-space: nowrap;
+}
+
+.reason-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.reason-bar-track {
+    height: 8px;
+    border-radius: var(--radius-full);
+    background: var(--bg-soft);
+    overflow: hidden;
+}
+
+.reason-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+}
+
+.reason-value {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink);
+    text-align: right;
+}
+
+/* ==========================
+   WHY TOKYO + 정보 카드
+========================== */
+.detail-why-wrap {
+    display: grid;
+    grid-template-columns: minmax(260px, 30%) 1fr;
+    gap: 28px;
+    padding: 0 24px 56px;
+}
+
+.detail-why-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.detail-why-eyebrow {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-dark);
+}
+
+.detail-why-body {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+.detail-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.detail-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-card-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent-dark);
+}
+
+.detail-card-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.detail-card-title {
+    margin-top: 10px;
+    font-size: 19px;
+    line-height: 1.3;
+}
+
+.detail-card-desc {
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.detail-card-img {
+    margin-top: 14px;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.detail-satisfaction {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+}
+
+.detail-satisfaction i {
+    color: var(--accent-dark);
+    flex-shrink: 0;
+}
+
+.detail-satisfaction strong {
+    color: var(--accent-dark);
+    font-weight: 800;
+}
+
+.detail-card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 12px;
+    padding: 5px 11px;
+    border-radius: var(--radius-full);
+    font-size: 11.5px;
+    font-weight: 700;
+    width: fit-content;
+}
+
+.detail-card-tag.tone-a { background: var(--coral-soft); color: var(--coral-dark); }
+.detail-card-tag.tone-b { background: #E4F5EA; color: #2F9E5B; }
+.detail-card-tag.tone-c { background: var(--teal-soft); color: var(--teal-dark); }
+
+.detail-cost-bars {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.cost-row {
+    display: grid;
+    grid-template-columns: 58px 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.cost-label {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+}
+
+.cost-bar-track {
+    height: 6px;
+    border-radius: var(--radius-full);
+    background: var(--bg-soft);
+    overflow: hidden;
+}
+
+.cost-bar-fill {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-full);
+    background: var(--gold);
+}
+
+.cost-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink);
+    white-space: nowrap;
+}
+
+/* ==========================
+   CTA
+========================== */
+.detail-cta-wrap {
+    margin-bottom: 72px;
+}
+
+.detail-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 54px;
+    border-radius: var(--radius-full);
+    background: var(--accent);
+    color: var(--ink);
+    font-size: 15px;
+    font-weight: 700;
+    transition: transform .16s ease, box-shadow .16s ease;
+}
+
+.detail-cta-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 26px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+/* ==========================
+   반응형
+========================== */
+@media (max-width: 960px) {
+    .detail-top { grid-template-columns: 1fr; }
+    .detail-hero-img { height: 320px; }
+    .detail-why-wrap { grid-template-columns: 1fr; }
+    .detail-cards { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+    .detail-city { font-size: 32px; }
+    .detail-match-value { font-size: 40px; }
+    .detail-info-head { flex-direction: column; }
+}
