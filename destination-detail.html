@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title id="pageTitle">TOKYO — 여행지 상세 | WAYO</title>
+    <meta name="description" id="pageDescription" content="WAYO AI가 분석한 도쿄 여행 적합도와 맞춤 정보를 확인해보세요.">
+    <meta name="theme-color" content="#FFC83D">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/destination-detail.css">
+</head>
+<body>
+
+    <!-- 네비게이션 -->
+    <!-- 네비게이션: 상단 골드 바 + 햄버거(좌) · 로고(중앙) · 검색/즐겨찾기/로그인(우) -->
+    <div class="navbar-accent-bar"></div>
+    <header class="navbar-wix" id="siteNavbar">
+        <div class="navbar-wix-inner">
+            <div class="navbar-wix-side">
+                <button type="button" class="navbar-hamburger-btn" id="drawerToggleBtn" aria-label="메뉴 열기" aria-expanded="false">
+                    <i data-lucide="menu" style="width:22px;height:22px"></i>
+                </button>
+            </div>
+
+            <a href="index.html" class="navbar-wix-logo" aria-label="WAYO 홈으로 이동">
+                <img src="assets/logo/g_logo_t_extrabold_final.png" alt="WAYO" class="navbar-wix-logo-img">
+            </a>
+
+            <div class="navbar-wix-side is-right">
+                <div class="navbar-wix-right">
+                    <div class="navbar-search-wrap">
+                        <input type="text" class="navbar-search-input" id="navSearchInput" placeholder="검색어를 입력하세요">
+                        <button type="button" class="navbar-search-btn" id="navSearchBtn" aria-label="검색">
+                            <i data-lucide="search" style="width:16px;height:16px"></i>
+                        </button>
+                    </div>
+                    <a href="favorites.html" class="navbar-wix-login-btn" aria-label="즐겨찾기">
+                        <i data-lucide="heart" style="width:19px;height:19px"></i>
+                    </a>
+                    <a href="login.html" class="navbar-wix-login-btn js-login-trigger" aria-label="로그인">
+                        <i data-lucide="user" style="width:19px;height:19px"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 사이드 드로어 메뉴 (카테고리) -->
+    <div class="wayo-drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="wayo-drawer" id="drawerPanel" aria-hidden="true">
+        <div class="wayo-drawer-head">
+            <img src="assets/logo/w3_logo_3_3_wayo_lockup_bottom.png" alt="WAYO" class="wayo-drawer-head-logo">
+            <button type="button" class="wayo-drawer-close" id="drawerCloseBtn" aria-label="메뉴 닫기">
+                <i data-lucide="x" style="width:20px;height:20px"></i>
+            </button>
+        </div>
+
+        <div class="wayo-drawer-body">
+            <p class="wayo-drawer-label">NAVIGATION</p>
+            <nav class="wayo-drawer-nav">
+                <a href="index.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="home" style="width:18px;height:18px"></i> 홈</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="destination.html" class="wayo-drawer-link is-active">
+                    <span class="wayo-drawer-link-main"><i data-lucide="compass" style="width:18px;height:18px"></i> 여행지 추천</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="planner.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="calendar" style="width:18px;height:18px"></i> AI 플래너</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="insights.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="sparkles" style="width:18px;height:18px"></i> 인사이트</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+            </nav>
+
+            <div class="wayo-drawer-label-row">
+                <p class="wayo-drawer-label">최근 본 여행지</p>
+                <div class="wayo-drawer-sort-wrap">
+                    <button type="button" class="wayo-drawer-sort-btn" id="drawerSortBtn" aria-label="정렬 기준" aria-expanded="false">
+                        <i data-lucide="sliders-horizontal" style="width:15px;height:15px"></i>
+                    </button>
+                    <div class="wayo-drawer-sort-menu" id="drawerSortMenu">
+                        <p class="wayo-drawer-sort-title">정렬 기준</p>
+                        <button type="button" class="wayo-drawer-sort-option is-active" data-sort="none">
+                            없음 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="name">
+                            이름순 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="country">
+                            국가별 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="drawerRecentList"></div>
+        </div>
+
+        <div class="wayo-drawer-foot">
+            <button type="button" class="wayo-drawer-profile js-login-trigger" aria-label="로그인">
+                <span class="wayo-drawer-avatar">W</span>
+                <span class="wayo-drawer-profile-sub">로그인하여 맞춤 일정을 저장하세요</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- 상단: 사진 + 매치 요약 -->
+    <div class="container detail-top">
+        <div class="detail-hero">
+            <a href="destination.html" class="detail-back-link">
+                <i data-lucide="arrow-left" style="width:14px;height:14px"></i> BACK TO TRAVEL
+            </a>
+            <img src="assets/image/PAGE 03/1.jpg" alt="도쿄 타워와 후지산이 보이는 노을 스카이라인" class="detail-hero-img" id="detailHeroImg">
+            <div class="detail-hero-chips">
+                <span class="detail-chip"><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span id="detailChipLocation">TOKYO, JAPAN</span></span>
+                <span class="detail-chip"><i data-lucide="sun" style="width:13px;height:13px"></i> <span id="detailWeather">22°C 맑음</span></span>
+                <span class="detail-chip"><i data-lucide="clock" style="width:13px;height:13px"></i> <span id="detailChipTime">JST GMT+9</span></span>
+            </div>
+            <div class="detail-thumbs" id="detailThumbs">
+                <img src="assets/image/PAGE 03/2.jpg" alt="시부야 스크램블 교차로">
+                <img src="assets/image/PAGE 03/3.jpg" alt="나리타산 신쇼지 참배길">
+                <img src="assets/image/PAGE 03/5.jpg" alt="시부야 거리">
+                <div class="detail-thumb-more">
+                    <img src="assets/image/PAGE 03/6.jpg" alt="시타마치 신사 계단">
+                    <span>+12</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-info">
+            <div class="detail-info-head">
+                <div>
+                    <h1 class="detail-city" id="detailCityName">TOKYO</h1>
+                    <span class="detail-location"><i data-lucide="map-pin" style="width:13px;height:13px"></i> <span id="detailLocationText">Japan</span></span>
+                </div>
+            </div>
+
+            <div class="detail-stats-card">
+                <div class="detail-match">
+                    <span class="detail-match-label">AI MATCH</span>
+                    <span class="detail-match-value"><span id="detailMatchValue">94</span><small>%</small></span>
+                </div>
+                <div class="detail-reasons">
+                    <p class="detail-reasons-title">당신에게 잘 맞는 이유</p>
+                    <div class="reason-row">
+                        <span class="reason-label"><span class="reason-icon"><i data-lucide="utensils" style="width:13px;height:13px"></i></span> Food</span>
+                        <span class="reason-bar-track"><span class="reason-bar-fill" id="reasonFoodFill" style="width:96%"></span></span>
+                        <span class="reason-value" id="reasonFoodValue">96%</span>
+                    </div>
+                    <div class="reason-row">
+                        <span class="reason-label"><span class="reason-icon"><i data-lucide="building-2" style="width:13px;height:13px"></i></span> City</span>
+                        <span class="reason-bar-track"><span class="reason-bar-fill" id="reasonCityFill" style="width:94%"></span></span>
+                        <span class="reason-value" id="reasonCityValue">94%</span>
+                    </div>
+                    <div class="reason-row">
+                        <span class="reason-label"><span class="reason-icon"><i data-lucide="landmark" style="width:13px;height:13px"></i></span> Culture</span>
+                        <span class="reason-bar-track"><span class="reason-bar-fill" id="reasonCultureFill" style="width:91%"></span></span>
+                        <span class="reason-value" id="reasonCultureValue">91%</span>
+                    </div>
+                    <div class="reason-row">
+                        <span class="reason-label"><span class="reason-icon"><i data-lucide="armchair" style="width:13px;height:13px"></i></span> Relax</span>
+                        <span class="reason-bar-track"><span class="reason-bar-fill" id="reasonRelaxFill" style="width:78%"></span></span>
+                        <span class="reason-value" id="reasonRelaxValue">78%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY {CITY} + 정보 카드 -->
+    <div class="container detail-why-wrap">
+        <div class="detail-why">
+            <h2 class="detail-why-title" id="detailWhyTitle">WHY TOKYO?</h2>
+            <p class="detail-why-eyebrow">AI가 추천하는 이유</p>
+            <p class="detail-why-body" id="detailWhyBody">WAYO는 최근 여행 데이터와 당신의 취향을 분석했어요. 그 결과, 도쿄는 당신의 여행 스타일과 높은 적합도를 보여요.</p>
+            <p class="detail-why-body" id="detailInsightBody">미식과 도시 탐방을 선호하는 스타일에 도쿄의 높은 미식·문화 콘텐츠 밀도가 잘 맞아요. 짧은 이동 거리로 다양한 경험을 할 수 있는 곳이라 당신에게 큰 만족을 드려요.</p>
+
+            <p class="detail-satisfaction">
+                <i data-lucide="sparkle" style="width:13px;height:13px"></i>
+                실제 여행 데이터에서도 만족도 <strong id="detailSatisfaction">4.6</strong>/5.0으로 매우 높게 나타났어요.
+            </p>
+        </div>
+
+        <div class="detail-cards">
+            <div class="detail-card">
+                <p class="detail-card-label"><span class="detail-card-icon"><i data-lucide="calendar" style="width:14px;height:14px"></i></span> BEST TIME</p>
+                <h4 class="detail-card-title" id="detailBestTime">Mar – Apr<br>Oct – Nov</h4>
+                <p class="detail-card-desc" id="detailBestTimeDesc">봄에는 벚꽃, 가을에는 단풍이 아름다워 여행하기 좋아요.</p>
+                <span class="detail-card-tag tone-a">🌸 최적기 추천</span>
+            </div>
+
+            <div class="detail-card">
+                <p class="detail-card-label"><span class="detail-card-icon"><i data-lucide="wallet" style="width:14px;height:14px"></i></span> AVG COST (1인 기준)</p>
+                <h4 class="detail-card-title" id="detailCostTotal">₩1,280,000</h4>
+                <div class="detail-cost-bars">
+                    <div class="cost-row">
+                        <span class="cost-label">항공권</span>
+                        <span class="cost-bar-track"><span class="cost-bar-fill" id="costFlightFill" style="width:75%"></span></span>
+                        <span class="cost-value" id="costFlightValue">₩450,000</span>
+                    </div>
+                    <div class="cost-row">
+                        <span class="cost-label">숙박</span>
+                        <span class="cost-bar-track"><span class="cost-bar-fill" id="costStayFill" style="width:70%"></span></span>
+                        <span class="cost-value" id="costStayValue">₩420,000</span>
+                    </div>
+                    <div class="cost-row">
+                        <span class="cost-label">식비</span>
+                        <span class="cost-bar-track"><span class="cost-bar-fill" id="costFoodFill" style="width:47%"></span></span>
+                        <span class="cost-value" id="costFoodValue">₩280,000</span>
+                    </div>
+                    <div class="cost-row">
+                        <span class="cost-label">교통/기타</span>
+                        <span class="cost-bar-track"><span class="cost-bar-fill" id="costEtcFill" style="width:22%"></span></span>
+                        <span class="cost-value" id="costEtcValue">₩130,000</span>
+                    </div>
+                </div>
+                <span class="detail-card-tag tone-b">💰 합리적인 비용</span>
+            </div>
+
+            <div class="detail-card">
+                <p class="detail-card-label"><span class="detail-card-icon"><i data-lucide="calendar-days" style="width:14px;height:14px"></i></span> RECOMMENDED DAYS</p>
+                <h4 class="detail-card-title" id="detailRecDays">4 – 5 Days</h4>
+                <p class="detail-card-desc" id="detailRecDesc">도쿄의 주요 명소와 로컬 문화를 여유롭게 즐길 수 있는 일정이에요.</p>
+                <span class="detail-card-tag tone-c">⏱ 짧고 알찬 여행</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="container detail-cta-wrap">
+        <a href="planner.html" class="detail-cta-btn">
+            이 여행으로 플래너 만들기 <i data-lucide="arrow-right" style="width:16px;height:16px"></i>
+        </a>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <img src="assets/logo/w3_logo_2.png" alt="WAYO 로고" class="brand-logo">
+                    </a>
+                    <p class="footer-tagline">취향을 이해하고, 가장 잘 맞는 여행지부터 하루의 일정까지 설계하는 AI 여행 큐레이터 &amp; 플래너입니다.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>서비스</h4>
+                        <a href="destination.html">여행지 추천</a>
+                        <a href="planner.html">플래너</a>
+                        <a href="insights.html">인사이트</a>
+                        <a href="favorites.html">즐겨찾기</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>계정</h4>
+                        <a href="login.html" class="js-login-trigger">로그인</a>
+                        <a href="login.html">회원가입</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 HANA Personal Project WAYO. Travel your way.</span>
+                <span>HTML · CSS · JavaScript · Python(Pillow) · Google Maps API</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/nav.js"></script>
+    <script src="js/destination-detail-data.js"></script>
+    <script src="js/destination-detail.js"></script>
+</body>
+</html>

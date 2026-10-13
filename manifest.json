@@ -1,0 +1,19 @@
+{
+  "name": "WAYO — AI 여행 큐레이터 & 플래너",
+  "short_name": "WAYO",
+  "description": "목적지·기간·취향만 입력하면 AI가 맞춤 여행 일정안을 제안해주는 서비스",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFF9F3",
+  "theme_color": "#16A398",
+  "lang": "ko",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>즐겨찾기 — WAYO</title>
+    <meta name="description" content="저장한 여행지와 일정을 한곳에서 관리하세요.">
+    <meta name="theme-color" content="#FFC83D">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/favorites.css">
+</head>
+<body>
+
+    <!-- 네비게이션 -->
+    <!-- 네비게이션: 상단 골드 바 + 햄버거(좌) · 로고(중앙) · 검색/즐겨찾기/로그인(우) -->
+    <div class="navbar-accent-bar"></div>
+    <header class="navbar-wix" id="siteNavbar">
+        <div class="navbar-wix-inner">
+            <div class="navbar-wix-side">
+                <button type="button" class="navbar-hamburger-btn" id="drawerToggleBtn" aria-label="메뉴 열기" aria-expanded="false">
+                    <i data-lucide="menu" style="width:22px;height:22px"></i>
+                </button>
+            </div>
+
+            <a href="index.html" class="navbar-wix-logo" aria-label="WAYO 홈으로 이동">
+                <img src="assets/logo/g_logo_t_extrabold_final.png" alt="WAYO" class="navbar-wix-logo-img">
+            </a>
+
+            <div class="navbar-wix-side is-right">
+                <div class="navbar-wix-right">
+                    <div class="navbar-search-wrap">
+                        <input type="text" class="navbar-search-input" id="navSearchInput" placeholder="검색어를 입력하세요">
+                        <button type="button" class="navbar-search-btn" id="navSearchBtn" aria-label="검색">
+                            <i data-lucide="search" style="width:16px;height:16px"></i>
+                        </button>
+                    </div>
+                    <a href="favorites.html" class="navbar-wix-login-btn" aria-label="즐겨찾기">
+                        <i data-lucide="heart" style="width:19px;height:19px"></i>
+                    </a>
+                    <a href="login.html" class="navbar-wix-login-btn js-login-trigger" aria-label="로그인">
+                        <i data-lucide="user" style="width:19px;height:19px"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 사이드 드로어 메뉴 (카테고리) -->
+    <div class="wayo-drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="wayo-drawer" id="drawerPanel" aria-hidden="true">
+        <div class="wayo-drawer-head">
+            <img src="assets/logo/w3_logo_3_3_wayo_lockup_bottom.png" alt="WAYO" class="wayo-drawer-head-logo">
+            <button type="button" class="wayo-drawer-close" id="drawerCloseBtn" aria-label="메뉴 닫기">
+                <i data-lucide="x" style="width:20px;height:20px"></i>
+            </button>
+        </div>
+
+        <div class="wayo-drawer-body">
+            <p class="wayo-drawer-label">NAVIGATION</p>
+            <nav class="wayo-drawer-nav">
+                <a href="index.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="home" style="width:18px;height:18px"></i> 홈</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="destination.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="compass" style="width:18px;height:18px"></i> 여행지 추천</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="planner.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="calendar" style="width:18px;height:18px"></i> AI 플래너</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="insights.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="sparkles" style="width:18px;height:18px"></i> 인사이트</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+            </nav>
+
+            <div class="wayo-drawer-label-row">
+                <p class="wayo-drawer-label">최근 본 여행지</p>
+                <div class="wayo-drawer-sort-wrap">
+                    <button type="button" class="wayo-drawer-sort-btn" id="drawerSortBtn" aria-label="정렬 기준" aria-expanded="false">
+                        <i data-lucide="sliders-horizontal" style="width:15px;height:15px"></i>
+                    </button>
+                    <div class="wayo-drawer-sort-menu" id="drawerSortMenu">
+                        <p class="wayo-drawer-sort-title">정렬 기준</p>
+                        <button type="button" class="wayo-drawer-sort-option is-active" data-sort="none">
+                            없음 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="name">
+                            이름순 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="country">
+                            국가별 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="drawerRecentList"></div>
+        </div>
+
+        <div class="wayo-drawer-foot">
+            <button type="button" class="wayo-drawer-profile js-login-trigger" aria-label="로그인">
+                <span class="wayo-drawer-avatar">W</span>
+                <span class="wayo-drawer-profile-sub">로그인하여 맞춤 일정을 저장하세요</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- 페이지 헤더 -->
+    <div class="container page-header">
+        <span class="eyebrow">
+            <i data-lucide="heart" style="width:13px;height:13px"></i>
+            My Way
+        </span>
+        <h1>저장해둔 여행지를 모아봤어요.</h1>
+        <p>즐겨찾기한 여행지의 AI 맞춤 일정을 한곳에서 관리하세요.</p>
+    </div>
+
+    <!-- 탭 -->
+    <div class="container">
+        <div class="fav-tabs">
+            <button type="button" class="fav-tab is-active" id="tabBtnDest" data-tab="destinations">
+                TRAVEL DESTINATIONS <span class="fav-tab-count" id="destCount">0</span>
+            </button>
+            <button type="button" class="fav-tab" id="tabBtnItin" data-tab="itineraries">
+                ITINERARIES <span class="fav-tab-count" id="itinCount">0</span>
+            </button>
+        </div>
+
+        <!-- TAB 1: 저장한 여행지 -->
+        <div class="fav-tab-panel is-active" id="tabDest">
+            <div class="fav-dest-grid" id="destGrid"></div>
+            <div class="fav-empty" id="destEmpty">
+                <div class="icon-badge"><i data-lucide="heart" style="width:22px;height:22px"></i></div>
+                <h3>즐겨찾기가 비어있어요</h3>
+                <p style="margin-top:8px;">마음에 드는 여행지를 찾아서 저장해보세요.</p>
+                <a href="destination.html" class="btn btn-primary" style="margin-top:20px;">여행지 추천 받으러 가기</a>
+            </div>
+        </div>
+
+        <!-- TAB 2: 저장한 일정 -->
+        <div class="fav-tab-panel" id="tabItin">
+            <div class="fav-itin-head">
+                <h3>SAVED ITINERARIES</h3>
+                <p>WAYO AI가 생성하여 저장된 맞춤 일정 목록이에요.</p>
+            </div>
+            <div class="fav-itin-grid" id="itinGrid"></div>
+            <div class="fav-empty" id="itinEmpty">
+                <div class="icon-badge"><i data-lucide="calendar" style="width:22px;height:22px"></i></div>
+                <h3>저장된 일정이 없어요</h3>
+                <p style="margin-top:8px;">플래너에서 나만의 일정을 만들고 저장해보세요.</p>
+                <a href="planner.html" class="btn btn-primary" style="margin-top:20px;">플래너 열어보기</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <img src="assets/logo/w3_logo_2.png" alt="WAYO 로고" class="brand-logo">
+                    </a>
+                    <p class="footer-tagline">취향을 이해하고, 가장 잘 맞는 여행지부터 하루의 일정까지 설계하는 AI 여행 큐레이터 &amp; 플래너입니다.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>서비스</h4>
+                        <a href="destination.html">여행지 추천</a>
+                        <a href="planner.html">플래너</a>
+                        <a href="insights.html">인사이트</a>
+                        <a href="favorites.html">즐겨찾기</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>계정</h4>
+                        <a href="login.html" class="js-login-trigger">로그인</a>
+                        <a href="login.html">회원가입</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 HANA Personal Project WAYO. Travel your way.</span>
+                <span>HTML · CSS · JavaScript · Python(Pillow) · Google Maps API</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/destination-detail-data.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html>

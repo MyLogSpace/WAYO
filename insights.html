@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>인사이트 — WAYO</title>
+    <meta name="description" content="여행 데이터로 발견하는 새로운 여행의 흐름 — 인기 여행지, 트렌드, 관심도 추이를 확인하세요.">
+    <meta name="theme-color" content="#FFC83D">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/insights.css">
+</head>
+<body>
+
+    <!-- 네비게이션 -->
+    <!-- 네비게이션: 상단 골드 바 + 햄버거(좌) · 로고(중앙) · 검색/즐겨찾기/로그인(우) -->
+    <div class="navbar-accent-bar"></div>
+    <header class="navbar-wix" id="siteNavbar">
+        <div class="navbar-wix-inner">
+            <div class="navbar-wix-side">
+                <button type="button" class="navbar-hamburger-btn" id="drawerToggleBtn" aria-label="메뉴 열기" aria-expanded="false">
+                    <i data-lucide="menu" style="width:22px;height:22px"></i>
+                </button>
+            </div>
+
+            <a href="index.html" class="navbar-wix-logo" aria-label="WAYO 홈으로 이동">
+                <img src="assets/logo/g_logo_t_extrabold_final.png" alt="WAYO" class="navbar-wix-logo-img">
+            </a>
+
+            <div class="navbar-wix-side is-right">
+                <div class="navbar-wix-right">
+                    <div class="navbar-search-wrap">
+                        <input type="text" class="navbar-search-input" id="navSearchInput" placeholder="검색어를 입력하세요">
+                        <button type="button" class="navbar-search-btn" id="navSearchBtn" aria-label="검색">
+                            <i data-lucide="search" style="width:16px;height:16px"></i>
+                        </button>
+                    </div>
+                    <a href="favorites.html" class="navbar-wix-login-btn" aria-label="즐겨찾기">
+                        <i data-lucide="heart" style="width:19px;height:19px"></i>
+                    </a>
+                    <a href="login.html" class="navbar-wix-login-btn js-login-trigger" aria-label="로그인">
+                        <i data-lucide="user" style="width:19px;height:19px"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 사이드 드로어 메뉴 (카테고리) -->
+    <div class="wayo-drawer-backdrop" id="drawerBackdrop"></div>
+    <aside class="wayo-drawer" id="drawerPanel" aria-hidden="true">
+        <div class="wayo-drawer-head">
+            <img src="assets/logo/w3_logo_3_3_wayo_lockup_bottom.png" alt="WAYO" class="wayo-drawer-head-logo">
+            <button type="button" class="wayo-drawer-close" id="drawerCloseBtn" aria-label="메뉴 닫기">
+                <i data-lucide="x" style="width:20px;height:20px"></i>
+            </button>
+        </div>
+
+        <div class="wayo-drawer-body">
+            <p class="wayo-drawer-label">NAVIGATION</p>
+            <nav class="wayo-drawer-nav">
+                <a href="index.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="home" style="width:18px;height:18px"></i> 홈</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="destination.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="compass" style="width:18px;height:18px"></i> 여행지 추천</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="planner.html" class="wayo-drawer-link">
+                    <span class="wayo-drawer-link-main"><i data-lucide="calendar" style="width:18px;height:18px"></i> AI 플래너</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+                <a href="insights.html" class="wayo-drawer-link is-active">
+                    <span class="wayo-drawer-link-main"><i data-lucide="sparkles" style="width:18px;height:18px"></i> 인사이트</span>
+                    <i data-lucide="chevron-right" style="width:16px;height:16px" class="wayo-drawer-chev"></i>
+                </a>
+            </nav>
+
+            <div class="wayo-drawer-label-row">
+                <p class="wayo-drawer-label">최근 본 여행지</p>
+                <div class="wayo-drawer-sort-wrap">
+                    <button type="button" class="wayo-drawer-sort-btn" id="drawerSortBtn" aria-label="정렬 기준" aria-expanded="false">
+                        <i data-lucide="sliders-horizontal" style="width:15px;height:15px"></i>
+                    </button>
+                    <div class="wayo-drawer-sort-menu" id="drawerSortMenu">
+                        <p class="wayo-drawer-sort-title">정렬 기준</p>
+                        <button type="button" class="wayo-drawer-sort-option is-active" data-sort="none">
+                            없음 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="name">
+                            이름순 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                        <button type="button" class="wayo-drawer-sort-option" data-sort="country">
+                            국가별 <i data-lucide="check" style="width:14px;height:14px" class="wayo-drawer-sort-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="drawerRecentList"></div>
+        </div>
+
+        <div class="wayo-drawer-foot">
+            <button type="button" class="wayo-drawer-profile js-login-trigger" aria-label="로그인">
+                <span class="wayo-drawer-avatar">W</span>
+                <span class="wayo-drawer-profile-sub">로그인하여 맞춤 일정을 저장하세요</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- 히어로 -->
+    <section class="ins-hero">
+        <div class="ins-hero-map"></div>
+        <div class="container ins-hero-inner">
+            <div>
+                <h1 class="ins-hero-title">WAYO INSIGHT</h1>
+                <p class="ins-hero-sub">여행 데이터로 발견하는 새로운 여행의 흐름.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container ins-main">
+
+        <!-- Row 1: TRENDING + WAYO SAYS -->
+        <div class="ins-row-top">
+            <div class="ins-card ins-trending">
+                <div class="ins-card-head">
+                    <span class="ins-card-icon">🔥</span>
+                    <div>
+                        <h3>TRENDING DESTINATIONS</h3>
+                        <p>실제 여행객 2,210명 응답 기준 TOP 6</p>
+                    </div>
+                </div>
+                <div class="ins-rank-list" id="rankList"></div>
+                <button type="button" class="ins-more-btn" id="moreRankBtn">
+                    더 많은 순위 보기 <i data-lucide="chevron-right" style="width:14px;height:14px"></i>
+                </button>
+            </div>
+
+            <div class="ins-card ins-says">
+                <div class="ins-says-text">
+                    <div class="ins-card-head">
+                        <span class="ins-card-icon"><i data-lucide="sparkles" style="width:16px;height:16px"></i></span>
+                        <div>
+                            <h3>WAYO SAYS</h3>
+                            <p>실제 여행 데이터로 본 트렌드</p>
+                        </div>
+                    </div>
+                    <p class="ins-says-headline">전체 여행객의 <strong>39.6%</strong>가 일본을 선택했어요, 가장 인기 있는 여행지예요.</p>
+                    <div class="ins-says-chips">
+                        <span class="ins-says-chip"><i data-lucide="calendar" style="width:14px;height:14px"></i> 평균 2~3일 단기 여행</span>
+                        <span class="ins-says-chip"><i data-lucide="utensils" style="width:14px;height:14px"></i> 음식관광이 1순위 목적</span>
+                        <span class="ins-says-chip"><i data-lucide="footprints" style="width:14px;height:14px"></i> 자연·풍경감상도 근소 2위</span>
+                    </div>
+                    <p class="ins-says-desc">일본 방문객의 평균 여행일수는 2.7일 — 짧은 일정으로 미식과 자연을 함께 즐기는 여행이 가장 많아요.</p>
+                </div>
+                <div class="ins-says-photo">
+                    <img src="assets/image/PAGE 03/1.jpg" alt="도쿄타워와 후지산">
+                    <i data-lucide="sparkle" class="ins-says-sparkle" style="width:18px;height:18px"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: TRAVEL TREND + JAPAN INTEREST -->
+        <div class="ins-row-mid">
+            <div class="ins-card ins-trend-card">
+                <div class="ins-trend-head">
+                    <div class="ins-card-head" style="margin-bottom:0;">
+                        <div>
+                            <h3>TRAVEL TREND</h3>
+                            <p>국가별 여행 관심도 추이</p>
+                        </div>
+                    </div>
+                    <div class="ins-range-toggle" id="rangeToggle">
+                        <button type="button" class="is-active" data-range="6m">6개월</button>
+                        <button type="button" data-range="1y">1년</button>
+                        <button type="button" data-range="all">전체</button>
+                    </div>
+                </div>
+
+                <div class="ins-chart-legend" id="chartLegend"></div>
+                <div class="ins-chart-wrap" id="chartWrap"></div>
+            </div>
+
+            <div class="ins-card ins-stat-card">
+                <p class="ins-stat-label">JAPAN TRAVEL INTEREST</p>
+                <p class="ins-stat-value">+18<small>%</small></p>
+                <p class="ins-stat-sub">Compared to last month</p>
+                <div class="ins-stat-note">
+                    <span class="ins-stat-note-icon"><i data-lucide="trending-up" style="width:15px;height:15px"></i></span>
+                    <p>일본 여행에 대한 전반적인 관심이 꾸준히 상승하고 있어요.</p>
+                </div>
+                <button type="button" class="ins-stat-btn" id="moreDataBtn">
+                    데이터 더 보기 <i data-lucide="chevron-right" style="width:14px;height:14px"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Row 3: POPULAR TRAVEL STYLE -->
+        <div class="ins-card ins-style-card">
+            <div class="ins-card-head">
+                <div>
+                    <h3>POPULAR TRAVEL STYLE</h3>
+                    <p>여행자들이 가장 많이 선택한 스타일</p>
+                </div>
+            </div>
+            <div class="ins-style-row" id="styleRow"></div>
+        </div>
+
+        <!-- Row 4: 내가 최근 본 여행지 -->
+        <div class="ins-card">
+            <div class="ins-card-head">
+                <div>
+                    <h3>MY RECENT VIEWS</h3>
+                    <p>내가 최근에 살펴본 여행지</p>
+                </div>
+            </div>
+            <div class="ins-style-row" id="recentRow"></div>
+        </div>
+
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand">
+                        <img src="assets/logo/w3_logo_2.png" alt="WAYO 로고" class="brand-logo">
+                    </a>
+                    <p class="footer-tagline">취향을 이해하고, 가장 잘 맞는 여행지부터 하루의 일정까지 설계하는 AI 여행 큐레이터 &amp; 플래너입니다.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>서비스</h4>
+                        <a href="destination.html">여행지 추천</a>
+                        <a href="planner.html">플래너</a>
+                        <a href="insights.html">인사이트</a>
+                        <a href="favorites.html">즐겨찾기</a>
+                    </div>
+                    <div class="footer-col">
+                        <h4>계정</h4>
+                        <a href="login.html" class="js-login-trigger">로그인</a>
+                        <a href="login.html">회원가입</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 HANA Personal Project WAYO. Travel your way.</span>
+                <span>HTML · CSS · JavaScript · Python(Pillow) · Google Maps API</span>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/destination-detail-data.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/insights.js"></script>
+</body>
+</html>
